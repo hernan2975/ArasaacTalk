@@ -8,15 +8,35 @@
   <link rel="stylesheet" href="/static/css/style.css" />
 </head>
 <body>
-  <h1 id="title"></h1>
-  <select id="language-select">
-    <option value="es">Español</option>
-    <option value="en">English</option>
-    <option value="pt">Português</option>
-  </select>
-  <input type="text" id="pictogramId" />
-  <button id="btn-search"></button>
-  <div id="pictogramDisplay"></div>
+  <h1 id="title">ARASAAC Offline</h1>
+
+  <section>
+    <label for="language-select">Idioma:</label>
+    <select id="language-select">
+      <option value="es">Español</option>
+      <option value="en">English</option>
+      <option value="pt">Português</option>
+    </select>
+  </section>
+
+  <section>
+    <input type="text" id="pictogramId" placeholder="ID del pictograma" />
+    <button id="btn-search">Buscar</button>
+  </section>
+
+  <hr />
+
+  <section>
+    <h2>Seleccioná categorías para precargar</h2>
+    <div id="categoriasCheckboxes"></div>
+    <button id="btnPreloadSelected">Precargar seleccionadas</button>
+    <progress id="preloadProgress" max="100" value="0"></progress>
+    <span id="preloadStatus"></span>
+  </section>
+
+  <hr />
+
+  <section id="pictogramDisplay"></section>
 
   <script src="/static/js/indexeddb.js"></script>
   <script src="/static/js/main.js"></script>
@@ -27,6 +47,3 @@
   </script>
 </body>
 </html>
-
-<progress id="preloadProgress" max="100" value="0"></progress>
-<span id="preloadStatus"></span>
