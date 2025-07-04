@@ -1,100 +1,83 @@
-:root {
-  --bg: #f9f9f9;
-  --text: #222;
-  --primary: #1976d2;
-  --button-hover: #1565c0;
-  --input-bg: #fff;
-  --input-border: #ccc;
-}
+<style>
+  :root {
+    --color-principal: #0d47a1;
+    --color-secundario: #1565c0;
+    --fondo: #ffffff;
+    --texto: #1b1b1b;
+    --enlace: #0d47a1;
+    --enlace-hover: #08306b;
+    --borde: #e0e0e0;
+    --fuente: system-ui, sans-serif;
+  }
 
-body.dark {
-  --bg: #121212;
-  --text: #f0f0f0;
-  --primary: #4caf50;
-  --button-hover: #388e3c;
-  --input-bg: #1e1e1e;
-  --input-border: #444;
-}
+  body {
+    margin: 0;
+    padding: 2rem;
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-family: var(--fuente);
+    line-height: 1.6;
+    max-width: 880px;
+    margin-inline: auto;
+  }
 
-/* Base */
-body {
-  font-family: system-ui, sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  padding: 2rem;
-  transition: background 0.3s ease, color 0.3s ease;
-}
+  h1, h2 {
+    color: var(--color-principal);
+  }
 
-h1 {
-  margin-bottom: 1rem;
-}
+  a {
+    color: var(--enlace);
+    text-decoration: underline;
+  }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  a:focus, a:hover {
+    color: var(--enlace-hover);
+    outline: 2px dashed var(--color-principal);
+    outline-offset: 2px;
+  }
 
-/* Inputs */
-input[type="text"],
-select {
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  border: 1px solid var(--input-border);
-  background-color: var(--input-bg);
-  border-radius: 4px;
-  color: var(--text);
-}
+  .boton {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.7rem 1.4rem;
+    background-color: var(--color-secundario);
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
 
-/* Botones */
-button {
-  background-color: var(--primary);
-  color: white;
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-left: 0.5rem;
-}
+  .boton:hover,
+  .boton:focus {
+    background-color: #0b3c85;
+    outline: none;
+  }
 
-button:hover {
-  background-color: var(--button-hover);
-}
+  ul {
+    padding-left: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
 
-/* Toggle botón */
-#themeToggle {
-  font-size: 1.2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text);
-}
+  footer {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #666;
+    border-top: 1px solid var(--borde);
+    padding-top: 1rem;
+  }
 
-/* Progreso */
-progress {
-  width: 100%;
-  height: 1rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
+  @media (max-width: 600px) {
+    body {
+      padding: 1.2rem;
+    }
 
-/* Pictograma */
-#pictogramDisplay {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-#pictogramDisplay img {
-  max-width: 300px;
-  margin-top: 1rem;
-  filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
-}
-
-/* Categorías */
-#categoriasCheckboxes label {
-  display: inline-block;
-  margin-right: 1rem;
-  margin-bottom: 0.5rem;
-}
+    .boton {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
