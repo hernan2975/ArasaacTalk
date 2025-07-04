@@ -1,5 +1,9 @@
 # 🇦🇷 ARASAACTalk Offline Python App
 
+<a href="https://fb3e545e-8e33-4568-8543-3745f0b246c8-00-37mxa4hfjg42u.kirk.replit.dev/" target="_blank">
+  <img src="https://img.shields.io/badge/%F0%9F%94%8C%20Probar%20App-en%20Replit-blue?style=for-the-badge" alt="Probar App en Replit" />
+</a>
+
 Aplicación educativa instalable, multilingüe y **100% funcional sin conexión a internet**, pensada para su uso en escuelas e instituciones argentinas.
 
 ---
