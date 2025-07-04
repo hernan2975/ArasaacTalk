@@ -1,3 +1,14 @@
 {
-  "categorias": ["escuela", "hogar", "comida", "emociones", "acciones"]
+  "categorias": [
+    "personas",
+    "acciones",
+    "animales",
+    "alimentación",
+    "hogar",
+    "ropa",
+    "salud",
+    "emociones",
+    "lugares",
+    "útiles escolares"
+  ]
 }
