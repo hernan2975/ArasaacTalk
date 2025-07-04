@@ -1,0 +1,12 @@
+{
+  "title": "ARASAAC Offline",
+  "placeholder": "e.g., 12345",
+  "button": "Search pictogram",
+  "preload": "Preload selected",
+  "notFound": "⚠️ Pictogram not found",
+  "done": "✅ Preload complete",
+  "loading": "Preloading...",
+  "language": "Language:",
+  "idLabel": "Pictogram ID:",
+  "preloadTitle": "Categories to preload"
+}
