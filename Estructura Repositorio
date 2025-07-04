@@ -1,39 +1,46 @@
 🧱 Estructura General del Proyecto (Python + PWA + Offline)
 
 arasaac-offline-pwa/
-├── app/                          # Módulo Flask (backend)
+├── app/
 │   ├── __init__.py
-│   └── routes.py                 # Rutas incluyendo acceso seguro a archivos locales
-├── static/                       # Archivos estáticos del frontend (CSS, JS, íconos)
+│   └── routes.py
+│
+├── templates/
+│   └── index.html
+│
+├── static/
 │   ├── css/
 │   │   └── style.css
-│   ├── icons/
-│   │   ├── icon-192.png
-│   │   └── icon-512.png
-│   └── js/
-│       ├── indexeddb.js          # Manejo de almacenamiento offline
-│       ├── main.js               # Lógica de UI y precarga
-│       └── service-worker.js     # Offline PWA
-├── templates/
-│   └── index.html                # Página principal de la app
-├── preload/                      # Contenido descargado para modo offline completo
-│   ├── categorias.json           # Categorías base para precargar pictogramas
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── indexeddb.js
+│   │   └── service-worker.js
+│   └── icons/
+│       ├── icon-192.png
+│       └── icon-512.png
+│
+├── preload/
+│   ├── categorias.json
 │   └── pictos/
-│       ├── datos/                # Archivos JSON (pictogramas)
-│       └── imagenes/             # Archivos PNG (imágenes locales)
-├── i18n/                         # Diccionarios multilingües
+│       ├── datos/
+│       └── imagenes/
+│
+├── i18n/
 │   ├── es.json
 │   ├── en.json
 │   └── pt.json
+│
 ├── scripts/
-│   └── preload_pictograms.py     # Script para precargar pictogramas en lote (opcional)
-├── manifest.webmanifest          # Configuración PWA (instalable)
-├── app.py                        # Lanza la app Flask
-├── requirements.txt              # Dependencias de Python
-├── start.sh                      # Script de ejecución para el .deb
-├── README.md                     # Documentación general del proyecto
-├── LICENSE                       # Licencia (ej. MIT o GPL)
-├── .gitignore                    # Archivos/carpeta a ignorar por Git
-└── build/                        # Carpeta usada para generar el paquete .deb
-    └── opt/
-        └── arasaac-offline/      # Contenido que se instalará vía `.deb`
+│   └── preload_pictograms.py
+│
+├── manifest.webmanifest
+├── app.py
+├── start.sh
+├── requirements.txt
+├── LICENSE
+├── README.md
+├── .gitignore
+│
+├── copiar_a_build.sh           # ← ✅ Copia los archivos a build/
+└── build_deb.sh                # ← ✅ Genera el paquete .deb final
+      # Contenido que se instalará vía `.deb`
