@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARASAAC Offline</title>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <h1 id="title"></h1>
+  <select id="language-select">
+    <option value="es">Español</option>
+    <option value="en">English</option>
+    <option value="pt">Português</option>
+  </select>
+  <input type="text" id="pictogramId" />
+  <button id="btn-search"></button>
+  <div id="pictogramDisplay"></div>
+
+  <script src="/static/js/indexeddb.js"></script>
+  <script src="/static/js/main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/static/js/service-worker.js');
+    }
+  </script>
+</body>
+</html>
