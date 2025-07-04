@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('btn-search').addEventListener('click', fetchPictogram);
 
   if (navigator.onLine) {
-    console.log('Precarga disponible (en línea)');
+    console.log('🟢 Online');
+  } else {
+    console.log('🔴 Offline – modo local activado');
   }
 });
 
@@ -26,65 +28,47 @@ async function loadLanguage(code) {
 }
 
 async function fetchPictogram() {
-  const id = document.getElementById('pictogramId').value;
-  const data = await getFromIndexedDB(id) || await fetchPictogramFromAPI(id);
-  if (data) render(data, id);
-}
+  const id = document.getElementById('pictogramId').value.trim();
+  if (!id) return;
 
-async function fetchPictogramFromAPI(id) {
-  const res = await fetch(`https://api.arasaac.org/api/pictograms/${lang}/${id}`);
-  const data = await res.json();
-  await saveToIndexedDB(id, data);
-  return data;
-}
+  let data = await getFromIndexedDB(id);
+  let imageBlob = await getFromIndexedDB(`${id}-img`);
 
-async function render(data, id) {
-  const blob = await getFromIndexedDB(`${id}-img`);
-  const imgUrl = blob ? URL.createObjectURL(blob) : `https://static.arasaac.org/pictograms/${id}/${id}_300.png`;
-  const keyword = data.keywords[0]?.keyword || 'Sin nombre';
-
-  const div = document.getElementById('pictogramDisplay');
-  div.innerHTML = `<h2>${keyword}</h2><img src="${imgUrl}" alt="${keyword}" />`;
-}
-
-async function initCategorySelection() {
-  const res = await fetch('/preload/categorias.json');
-  const { categorias } = await res.json();
-  const container = document.getElementById('categoriasCheckboxes');
-
-  categorias.forEach(cat => {
-    const label = document.createElement('label');
-    label.innerHTML = `<input type="checkbox" value="${cat}" checked /> ${cat}`;
-    container.appendChild(label);
-  });
-
-  document.getElementById('btnPreloadSelected').addEventListener('click', () => {
-    const seleccionadas = Array.from(container.querySelectorAll('input:checked')).map(input => input.value);
-    preloadSelected(seleccionadas);
-  });
-}
-
-async function preloadSelected(categorias) {
-  const progress = document.getElementById('preloadProgress');
-  const status = document.getElementById('preloadStatus');
-  let total = categorias.length * 5;
-  let loaded = 0;
-
-  for (const cat of categorias) {
-    const pictos = await fetch(`https://api.arasaac.org/api/pictograms/${lang}/search/${encodeURIComponent(cat)}`)
-      .then(res => res.json())
-      .catch(() => []);
-
-    for (const picto of pictos.slice(0, 5)) {
-      const exists = await getFromIndexedDB(picto._id);
-      if (!exists) {
-        await saveToIndexedDB(picto._id, picto);
-      }
-      loaded++;
-      progress.value = (loaded / total) * 100;
-      status.textContent = `Precargando (${loaded}/${total})...`;
+  if (!data && navigator.onLine) {
+    try {
+      const res = await fetch(`https://api.arasaac.org/api/pictograms/${lang}/${id}`);
+      data = await res.json();
+      await saveToIndexedDB(id, data);
+      const imgBlob = await fetch(`https://static.arasaac.org/pictograms/${id}/${id}_300.png`).then(r => r.blob());
+      await saveImageBlob(id, imgBlob);
+      imageBlob = imgBlob;
+    } catch (e) {
+      console.warn('🌐 Falló conexión online');
     }
   }
 
-  status.textContent = `✅ Precarga personalizada completa`;
+  if (!data) {
+    try {
+      const res = await fetch(`/preload/pictos/datos/${id}.json`);
+      data = await res.json();
+      const imgRes = await fetch(`/preload/pictos/imagenes/${id}.png`);
+      imageBlob = await imgRes.blob();
+    } catch (e) {
+      document.getElementById('pictogramDisplay').innerHTML = `<p>⚠️ No se encontró el pictograma</p>`;
+      return;
+    }
+  }
+
+  render(data, imageBlob, id);
+}
+
+function render(data, imageBlob, id) {
+  const keyword = data.keywords?.[0]?.keyword || 'Sin nombre';
+  const imgURL = imageBlob ? URL.createObjectURL(imageBlob) : `https://static.arasaac.org/pictograms/${id}/${id}_300.png`;
+
+  const div = document.getElementById('pictogramDisplay');
+  div.innerHTML = `
+    <h2>${keyword}</h2>
+    <img src="${imgURL}" alt="${keyword}" />
+  `;
 }
