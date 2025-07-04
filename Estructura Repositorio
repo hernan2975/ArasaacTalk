@@ -1,0 +1,30 @@
+🧱 Estructura General del Proyecto (Python + PWA + Offline)
+
+arasaac-offline-pwa/
+├── app/                          # Lógica Flask
+│   ├── __init__.py
+│   └── routes.py
+├── static/                      # Archivos estáticos
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── indexeddb.js
+│   │   └── service-worker.js
+│   ├── css/
+│   │   └── style.css
+│   └── icons/                   # Iconos PWA
+├── templates/
+│   └── index.html
+├── i18n/                        # Diccionarios multilingües (JSON)
+│   ├── es.json
+│   ├── en.json
+│   └── pt.json
+├── preload/                     # Datos precargados (pictos populares)
+│   └── categorias.json
+├── .gitignore
+├── requirements.txt
+├── LICENSE
+├── README.md
+├── manifest.webmanifest         # Configuración PWA
+├── app.py
+├── setup.py                     # Para .deb/.msi
+└── Makefile                     # Scripts de build
