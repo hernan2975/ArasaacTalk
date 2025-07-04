@@ -6,7 +6,10 @@ function openDB() {
   return new Promise((resolve) => {
     const request = indexedDB.open(DB_NAME, 1);
     request.onupgradeneeded = () => {
-      request.result.createObjectStore(STORE);
+      const db = request.result;
+      if (!db.objectStoreNames.contains(STORE)) {
+        db.createObjectStore(STORE);
+      }
     };
     request.onsuccess = () => {
       db = request.result;
@@ -17,8 +20,20 @@ function openDB() {
 
 async function saveToIndexedDB(id, data) {
   if (!db) await openDB();
-  const tx = db.transaction(STORE, 'readwrite');
-  tx.objectStore(STORE).put(data, id);
+
+  // Guarda JSON
+  const txData = db.transaction(STORE, 'readwrite');
+  txData.objectStore(STORE).put(data, id);
+
+  // Guarda imagen como blob
+  const imgUrl = `https://static.arasaac.org/pictograms/${id}/${id}_300.png`;
+  try {
+    const blob = await fetch(imgUrl).then(res => res.blob());
+    const txBlob = db.transaction(STORE, 'readwrite');
+    txBlob.objectStore(STORE).put(blob, `${id}-img`);
+  } catch (e) {
+    console.warn('No se pudo guardar imagen de pictograma:', id);
+  }
 }
 
 async function getFromIndexedDB(id) {
@@ -27,5 +42,6 @@ async function getFromIndexedDB(id) {
     const tx = db.transaction(STORE, 'readonly');
     const request = tx.objectStore(STORE).get(id);
     request.onsuccess = () => resolve(request.result);
+    request.onerror = () => resolve(null);
   });
 }
