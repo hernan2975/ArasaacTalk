@@ -2,50 +2,45 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ARASAAC Offline</title>
-  <link rel="manifest" href="/manifest.webmanifest" />
-  <link rel="stylesheet" href="/static/css/style.css" />
+  <title>ARASAACTalk Offline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1 id="title">ARASAAC Offline</h1>
-    <button id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">🌞</button>
-  </header>
+  <main>
+    <h1>🧠 ARASAACTalk Offline</h1>
 
-  <section>
-    <label for="language-select">Idioma:</label>
-    <select id="language-select">
-      <option value="es">Español</option>
-      <option value="en">English</option>
-      <option value="pt">Português</option>
-    </select>
-  </section>
+    <section>
+      <label for="texto">💬 Escribí una frase o palabra:</label>
+      <textarea id="texto" rows="3" placeholder="Ej: quiero tomar agua"></textarea>
+    </section>
 
-  <section>
-    <label for="pictogramId">ID del pictograma:</label>
-    <input type="text" id="pictogramId" placeholder="Ej: 12345" />
-    <button id="btn-search">Buscar</button>
-  </section>
+    <section class="acciones">
+      <label for="idioma">🌍 Idioma:</label>
+      <select id="idioma">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+        <option value="pt">Português</option>
+      </select>
 
-  <hr />
+      <button id="leer-btn">🔊 Leer en voz alta</button>
+      <button id="recomendar-btn">🎯 Recomendar pictogramas</button>
+    </section>
 
-  <section>
-    <h2>Categorías para precargar</h2>
-    <div id="categoriasCheckboxes"></div>
-    <button id="btnPreloadSelected">Precargar seleccionadas</button>
-    <progress id="preloadProgress" max="100" value="0"></progress>
-    <span id="preloadStatus"></span>
-  </section>
+    <section>
+      <label for="picto-id">🔎 Buscar pictograma por ID:</label>
+      <input type="text" id="picto-id" placeholder="Ej: 1234" />
+      <button id="buscar-btn">Buscar pictograma</button>
+    </section>
 
-  <section id="pictogramDisplay"></section>
+    <section>
+      <p><strong>📢 Estado:</strong> <span id="status">Listo</span></p>
+      <div id="resultado"></div>
+      <h2>Sugerencias visuales:</h2>
+      <div id="sugerencias" class="galeria"></div>
+    </section>
+  </main>
 
-  <script src="/static/js/indexeddb.js"></script>
-  <script src="/static/js/main.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/static/js/service-worker.js');
-    }
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
