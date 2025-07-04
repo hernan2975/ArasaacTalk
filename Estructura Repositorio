@@ -1,14 +1,18 @@
 🧱 Estructura General del Proyecto (Python + PWA + Offline)
 
 arasaac-offline-pwa/
-├── app/                          # Módulo Flask
+├── app/                           # Lógica Flask
 │   ├── __init__.py
 │   └── routes.py
-├── preload/                      # Precargas locales
-│   ├── categorias.json           # Lista de categorías a precargar
+├── preload/                       # Precargas offline
+│   ├── categorias.json            # Categorías a precargar (por ejemplo: escuela, hogar)
 │   └── pictos/
-│       ├── datos/                # Pictogramas guardados como JSON
-│       └── imagenes/             # Pictogramas guardados como PNG
+│       ├── datos/                 # Archivos JSON con los datos del pictograma
+│       │   ├── 12345.json
+│       │   └── 67890.json
+│       └── imagenes/             # Archivos .png de los pictogramas
+│           ├── 12345.png
+│           └── 67890.png
 ├── static/
 │   ├── css/
 │   │   └── style.css
@@ -25,14 +29,14 @@ arasaac-offline-pwa/
 │   ├── es.json
 │   ├── en.json
 │   └── pt.json
-├── manifest.webmanifest          # Configuración de la PWA
+├── manifest.webmanifest
 ├── requirements.txt
 ├── LICENSE
 ├── README.md
 ├── .gitignore
 ├── app.py
-├── setup.py                      # Para construir .deb o .msi
+├── setup.py
 ├── Makefile
 └── scripts/
-    └── preload_pictograms.py    # Script para precargar pictogramas desde consola
+    └── preload_pictograms.py     # Script para descargar pictogramas por categorías
 
