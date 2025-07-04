@@ -3,34 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <title>ARASAACTalk Offline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body {
-      font-family: sans-serif;
-      padding: 2rem;
-      max-width: 720px;
-      margin: auto;
-      line-height: 1.6;
+    :root {
+      --azul: #1976d2;
+      --gris-claro: #f5f5f5;
+      --gris-oscuro: #333;
     }
-    h1 { color: #1976d2; }
-    .btn {
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: var(--gris-claro);
+      color: var(--gris-oscuro);
+      line-height: 1.6;
+      max-width: 800px;
+      margin-inline: auto;
+    }
+    h1, h2 {
+      color: var(--azul);
+    }
+    .boton {
       display: inline-block;
-      background: #1976d2;
+      background-color: var(--azul);
       color: white;
-      padding: 0.6rem 1rem;
+      padding: 0.6rem 1.2rem;
       border-radius: 6px;
       text-decoration: none;
       margin-top: 1rem;
     }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      text-align: center;
+      color: #666;
+    }
+    .iconito {
+      font-size: 1.2em;
+      margin-right: 0.3em;
+    }
   </style>
 </head>
 <body>
+
   <h1>ARASAACTalk Offline</h1>
-  <p>Aplicación educativa sin conexión basada en pictogramas de ARASAAC.</p>
+  <p>
+    Aplicación educativa sin conexión, basada en pictogramas de <strong>ARASAAC</strong>, diseñada para escuelas, gabinetes informáticos y netbooks del sistema educativo argentino.
+  </p>
+
+  <h2>🧩 Características</h2>
   <ul>
-    <li>✅ Multilingüe</li>
-    <li>✅ Funciona offline</li>
-    <li>✅ Compatible con Linux</li>
+    <li>✅ 100% funcional sin internet</li>
+    <li>🌍 Multilingüe: Español, Inglés, Portugués</li>
+    <li>🧠 Precarga de pictogramas por categoría</li>
+    <li>📦 Compatible con GNU/Linux (.deb)</li>
+    <li>⚡ Instalación rápida vía terminal o como PWA</li>
   </ul>
-  <a class="btn" href="https://github.com/tu-usuario/arasaac-offline-pwa/releases">📦 Descargar .deb</a>
+
+  <h2>📥 Descarga</h2>
+  <p>Encontrá el instalador más reciente en la sección de versiones del repositorio:</p>
+  <a class="boton" href="https://github.com/tu-usuario/arasaac-offline-pwa/releases">⬇️ Descargar archivo .deb</a>
+
+  <h2>🎯 Objetivo</h2>
+  <p>
+    Esta aplicación fue pensada para <strong>acompañar la comunicación aumentativa</strong> en ámbitos educativos sin conectividad. Puede ser usada por docentes, fonoaudiólogos, estudiantes o acompañantes terapéuticos.
+  </p>
+
+  <h2>💡 Más información</h2>
+  <p>
+    Consultá el <a href="https://github.com/tu-usuario/arasaac-offline-pwa/blob/main/README.md" target="_blank">README completo del proyecto</a> para instrucciones detalladas de instalación y uso.
+  </p>
+
+  <footer>
+    Hecho con ❤️ desde Argentina · Basado en pictogramas de <a href="https://arasaac.org" target="_blank">ARASAAC</a>
+  </footer>
+
 </body>
 </html>
