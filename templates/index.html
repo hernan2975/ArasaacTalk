@@ -7,24 +7,27 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main>
-    <h1>🧠 ARASAACTalk Offline</h1>
+  <main class="contenedor">
+    <header>
+      <h1>🧠 ARASAACTalk Offline</h1>
+      <p>App educativa accesible basada en pictogramas de <strong>ARASAAC</strong>.</p>
+    </header>
 
     <section>
-      <label for="texto">💬 Escribí una frase o palabra:</label>
-      <textarea id="texto" rows="3" placeholder="Ej: quiero tomar agua"></textarea>
-    </section>
+      <label for="texto">💬 Escribí una frase:</label>
+      <textarea id="texto" rows="3" placeholder="Ej: Quiero tomar agua"></textarea>
 
-    <section class="acciones">
       <label for="idioma">🌍 Idioma:</label>
       <select id="idioma">
-        <option value="es">Español</option>
+        <option value="es" selected>Español</option>
         <option value="en">English</option>
         <option value="pt">Português</option>
       </select>
 
-      <button id="leer-btn">🔊 Leer en voz alta</button>
-      <button id="recomendar-btn">🎯 Recomendar pictogramas</button>
+      <div class="acciones">
+        <button id="leer-btn">🔊 Leer en voz alta</button>
+        <button id="recomendar-btn">🎯 Recomendar pictogramas</button>
+      </div>
     </section>
 
     <section>
@@ -33,11 +36,16 @@
       <button id="buscar-btn">Buscar pictograma</button>
     </section>
 
+    <section aria-live="polite">
+      <p><strong>📢 Estado:</strong> <span id="status">Esperando interacción...</span></p>
+    </section>
+
     <section>
-      <p><strong>📢 Estado:</strong> <span id="status">Listo</span></p>
-      <div id="resultado"></div>
-      <h2>Sugerencias visuales:</h2>
+      <h2>Sugerencias:</h2>
       <div id="sugerencias" class="galeria"></div>
+
+      <h2>Resultado:</h2>
+      <div id="resultado" class="galeria"></div>
     </section>
   </main>
 
