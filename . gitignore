@@ -1,0 +1,8 @@
+__pycache__/
+.env
+instance/
+*.pyc
+node_modules/
+dist/
+*.deb
+*.msi
