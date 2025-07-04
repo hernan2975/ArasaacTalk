@@ -1,30 +1,40 @@
 :root {
-  --principal: #1565c0;
-  --secundario: #0d47a1;
-  --fondo: #ffffff;
-  --texto: #212121;
-  --gris: #e0e0e0;
+  --color-fondo: #fafafa;
+  --color-texto: #212121;
+  --color-principal: #1565c0;
+  --color-secundario: #0d47a1;
+  --borde-claro: #cccccc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-fondo: #121212;
+    --color-texto: #ffffff;
+    --borde-claro: #444444;
+  }
 }
 
 body {
   margin: 0;
-  padding: 2rem;
   font-family: "Segoe UI", sans-serif;
-  background: var(--fondo);
-  color: var(--texto);
-  max-width: 900px;
-  margin-inline: auto;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
   line-height: 1.6;
 }
 
-h1 {
-  color: var(--principal);
+.contenedor {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+}
+
+header {
   text-align: center;
   margin-bottom: 2rem;
 }
 
-label {
-  font-weight: 600;
+h1 {
+  color: var(--color-principal);
 }
 
 textarea,
@@ -32,41 +42,47 @@ input,
 select {
   width: 100%;
   padding: 0.6rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0 1rem;
   font-size: 1rem;
-  border: 1px solid var(--gris);
+  border: 1px solid var(--borde-claro);
   border-radius: 4px;
+  background: white;
+  color: var(--color-texto);
 }
 
 button {
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
-  background: var(--secundario);
+  background-color: var(--color-secundario);
   color: white;
   border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
   border-radius: 6px;
   cursor: pointer;
-  margin-top: 0.5rem;
   margin-right: 0.5rem;
-  transition: background 0.2s;
 }
 
-button:hover {
-  background: #08306b;
+button:hover,
+button:focus {
+  background-color: #0b3c85;
+  outline: 2px dashed var(--color-principal);
 }
 
 .acciones {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
 .galeria img {
-  max-width: 120px;
-  margin: 6px;
-  border: 1px solid var(--gris);
+  max-width: 140px;
+  border: 1px solid var(--borde-claro);
   border-radius: 6px;
 }
