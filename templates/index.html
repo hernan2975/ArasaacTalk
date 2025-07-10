@@ -1,54 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>ARASAACTalk Offline</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <title>ARASAAC Talk</title>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-  <main class="contenedor">
-    <header>
-      <h1>🧠 ARASAACTalk Offline</h1>
-      <p>App educativa accesible basada en pictogramas de <strong>ARASAAC</strong>.</p>
-    </header>
-
-    <section>
-      <label for="texto">💬 Escribí una frase:</label>
-      <textarea id="texto" rows="3" placeholder="Ej: Quiero tomar agua"></textarea>
-
-      <label for="idioma">🌍 Idioma:</label>
-      <select id="idioma">
-        <option value="es" selected>Español</option>
-        <option value="en">English</option>
-        <option value="pt">Português</option>
-      </select>
-
-      <div class="acciones">
-        <button id="leer-btn">🔊 Leer en voz alta</button>
-        <button id="recomendar-btn">🎯 Recomendar pictogramas</button>
-      </div>
-    </section>
-
-    <section>
-      <label for="picto-id">🔎 Buscar pictograma por ID:</label>
-      <input type="text" id="picto-id" placeholder="Ej: 1234" />
-      <button id="buscar-btn">Buscar pictograma</button>
-    </section>
-
-    <section aria-live="polite">
-      <p><strong>📢 Estado:</strong> <span id="status">Esperando interacción...</span></p>
-    </section>
-
-    <section>
-      <h2>Sugerencias:</h2>
-      <div id="sugerencias" class="galeria"></div>
-
-      <h2>Resultado:</h2>
-      <div id="resultado" class="galeria"></div>
-    </section>
-  </main>
-
-  <script src="main.js"></script>
+    <h1>Bienvenido Ulises 👋</h1>
+    <div id="board"></div>
+    <button id="play-btn">🔈 Reproducir</button>
+    <script src="/static/js/main.js"></script>
 </body>
 </html>
