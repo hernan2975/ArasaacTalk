@@ -2,9 +2,16 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARASAAC Talk</title>
+
+  <!-- Estilos -->
   <link rel="stylesheet" href="/static/css/style.css" />
+
+  <!-- Meta accesibilidad -->
+  <meta name="theme-color" content="#4CAF50" />
+  <meta name="description" content="Construye frases con pictogramas ARASAAC. Comunicación aumentativa pensada para todos." />
+  <link rel="manifest" href="/manifest.webmanifest" />
 </head>
 <body>
   <header role="banner">
@@ -13,27 +20,35 @@
   </header>
 
   <nav id="categorias" role="navigation" aria-label="Categorías">
-    <!-- Botones cargados por JavaScript -->
+    <!-- Botones de categoría generados dinámicamente -->
   </nav>
 
   <main role="main">
-    <section id="board" aria-label="Pictogramas disponibles"></section>
+    <section id="board" aria-label="Pictogramas disponibles">
+      <!-- Sección principal de pictogramas -->
+    </section>
 
     <section id="phrase-area" aria-label="Frase construida">
       <h2>🧩 Frase:</h2>
       <div id="phrase-output" aria-live="polite"></div>
 
       <div class="actions">
-        <button id="play-btn">🔈 Reproducir</button>
-        <button id="clear-btn">🧹 Limpiar</button>
+        <button id="play-btn" aria-label="Reproducir frase">🔈 Reproducir</button>
+        <button id="clear-btn" aria-label="Limpiar frase">🧹 Limpiar</button>
       </div>
     </section>
   </main>
 
   <footer role="contentinfo">
-    <small>Hecho por Hernán para Ulises • 2025</small>
+    <small>ARASAAC Talk • Hecho por Hernán para Ulises • 2025</small>
   </footer>
 
-  <script src="/static/js/main.js" defer></script>
+  <!-- Scripts modularizados -->
+  <script src="/static/js/preload.js" type="module"></script>
+  <script src="/static/js/speech.js" type="module"></script>
+  <script src="/static/js/ui.js" type="module"></script>
+  <script src="/static/js/indexeddb.js" type="module"></script>
+  <script src="/static/js/main.js" type="module"></script>
+  <script src="/static/js/sw-init.js" defer></script>
 </body>
 </html>
