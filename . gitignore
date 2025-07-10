@@ -1,24 +1,37 @@
-# Python
+# ───── Python ─────
 __pycache__/
 *.py[cod]
-*.egg
-*.egg-info/
-dist/
-build/
 *.log
 
-# Flask
-instance/
-.env
+# Entornos virtuales
+env/
+venv/
+ENV/
+*.env
 
-# PWA
-static/js/service-worker.js
-static/js/*.map
+# Archivos temporales / caché
+*.swp
+*.bak
+*.tmp
+*.mp3
+*.sqlite3
 
-# IDEs
+# Configuración local / IDE
 .vscode/
 .idea/
-
-# OS
 .DS_Store
-Thumbs.db
+
+# Archivos de compilación / packaging
+build/
+dist/
+*.deb
+*.msi
+*.egg-info/
+
+# Web assets dinámicos
+static/screenshots/
+static/icons/*.xcf
+static/icons/*.svg
+
+# PWA caché (si usás Workbox)
+workbox-config.js
