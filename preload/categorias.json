@@ -1,5 +1,5 @@
-[
-  { "id": "comida", "nombre": "Comida" },
-  { "id": "acciones", "nombre": "Acciones" },
-  { "id": "emociones", "nombre": "Emociones" }
-]
+{
+  "comida": ["comer", "beber", "desayuno", "almuerzo", "cenar"],
+  "acciones": ["caminar", "correr", "leer", "jugar", "dormir"],
+  "emociones": ["feliz", "triste", "enojado", "sorprendido", "calmado"]
+}
