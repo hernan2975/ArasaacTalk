@@ -1,14 +1,5 @@
-{
-  "categorias": [
-    "personas",
-    "acciones",
-    "animales",
-    "alimentación",
-    "hogar",
-    "ropa",
-    "salud",
-    "emociones",
-    "lugares",
-    "útiles escolares"
-  ]
-}
+[
+  { "id": "comida", "nombre": "Comida" },
+  { "id": "acciones", "nombre": "Acciones" },
+  { "id": "emociones", "nombre": "Emociones" }
+]
