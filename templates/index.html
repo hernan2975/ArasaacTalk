@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>ARASAAC Talk</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="stylesheet" href="/static/css/style.css">
+  <meta charset="UTF-8">
+  <title>ARASAAC Talk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Bienvenido, Ulises 👋</h1>
-        <p>Seleccioná Pictogramas para Construir tu Frase</p>
-    </header>
+  <header>
+    <h1>🧠 ARASAAC Talk</h1>
+    <p>Construí frases con pictogramas</p>
+  </header>
 
-    <main>
-        <div id="board" class="pictogram-grid">
-            <!-- Aquí se cargarán los pictogramas -->
-        </div>
+  <nav id="categorias">
+    <button class="cat-btn selected">🍽 Comida</button>
+    <button class="cat-btn">🚶 Acciones</button>
+    <button class="cat-btn">😄 Emociones</button>
+  </nav>
 
-        <section id="phrase-area">
-            <h2>Frase Construida:</h2>
-            <div id="phrase-output"></div>
-            <button id="play-btn">🔈 Reproducir</button>
-            <button id="clear-btn">🧹 Limpiar</button>
-        </section>
-    </main>
+  <main>
+    <section id="board">
+      <!-- Pictogramas de muestra -->
+      <button class="picto">🍕 Pizza</button>
+      <button class="picto">😃 Feliz</button>
+      <button class="picto">🏃 Correr</button>
+    </section>
 
-    <footer>
-        <p>ARASAAC Talk © 2025</p>
-    </footer>
+    <section id="phrase-area">
+      <h2>🧩 Frase:</h2>
+      <div id="phrase-output"></div>
+      <button id="play-btn">🔈 Reproducir</button>
+      <button id="clear-btn">🧹 Limpiar</button>
+    </section>
+  </main>
 
-    <script src="/static/js/main.js"></script>
-    <script src="/static/js/indexeddb.js"></script>
+  <footer>
+    <small>ARASAAC Talk • Hecho por Hernán para Ulises • 2025</small>
+  </footer>
+
+  <script src="/static/js/main.js"></script>
 </body>
 </html>
