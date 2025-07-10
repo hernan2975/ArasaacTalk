@@ -1,7 +1,9 @@
+/* Estilos base para ARASAAC Talk */
 body {
     font-family: sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
     padding: 1em;
-    background-color: #f5f5f5;
 }
 
 #board {
@@ -10,3 +12,11 @@ body {
     gap: 1em;
 }
 
+button {
+    padding: 0.5em 1em;
+    font-size: 1.2em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
