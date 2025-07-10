@@ -1,6 +1,6 @@
-🧱 Estructura General del Proyecto (Python + PWA + Offline)
+📁 Estructura profesional del repositorio
 
-arasaac-offline-pwa/
+ArasaacTalk/
 ├── app/
 │   ├── __init__.py
 │   └── routes.py
@@ -25,11 +25,6 @@ arasaac-offline-pwa/
 │       ├── datos/
 │       └── imagenes/
 │
-├── i18n/
-│   ├── es.json
-│   ├── en.json
-│   └── pt.json
-│
 ├── scripts/
 │   └── preload_pictograms.py
 │
@@ -41,6 +36,5 @@ arasaac-offline-pwa/
 ├── README.md
 ├── .gitignore
 │
-├── copiar_a_build.sh           # ← ✅ Copia los archivos a build/
-└── build_deb.sh                # ← ✅ Genera el paquete .deb final
-      # Contenido que se instalará vía `.deb`
+├── copiar_a_build.sh
+└── build_deb.sh
