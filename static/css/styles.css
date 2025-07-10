@@ -1,22 +1,46 @@
-/* Estilos base para ARASAAC Talk */
 body {
-    font-family: sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 1em;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f4f7;
+  margin: 0;
+  padding: 1em;
+  text-align: center;
 }
 
-#board {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
+header, footer {
+  background: #4CAF50;
+  color: white;
+  padding: 1em;
+  border-radius: 8px;
 }
 
-button {
-    padding: 0.5em 1em;
-    font-size: 1.2em;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 6px;
+#categorias {
+  margin: 1em 0;
+}
+
+.cat-btn {
+  margin: 0.2em;
+  padding: 0.5em 1em;
+  background: #fff;
+  border: 2px solid #4CAF50;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.picto {
+  font-size: 2em;
+  margin: 0.5em;
+  padding: 1em;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#phrase-area {
+  margin-top: 1.5em;
 }
