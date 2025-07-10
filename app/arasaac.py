@@ -1,4 +1,3 @@
-
 import requests
 
 def buscar_pictogramas(palabra):
