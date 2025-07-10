@@ -44,17 +44,54 @@ bash start.sh
 🧰 Estructura del proyecto
 bash
     
-ArasaacTalk/
-├── app/                  # Lógica de rutas Flask
-├── templates/            # HTML con Jinja2
-├── static/               # Estilos, JS, service worker, íconos
-├── preload/              # Pictogramas y categorías precargadas
-├── i18n/                 # Traducciones (solo español activo)
-├── scripts/              # Script de carga inicial
-├── manifest.webmanifest  # Configuración PWA
-├── app.py                # Entrada principal Flask
-├── start.sh              # Arranque rápido
-├── build_deb.sh          # Empaquetado .deb
+ARASAAC-Talk/
+├── app/                    # Backend Flask modular
+│   ├── __init__.py
+│   ├── routes.py
+│   ├── arasaac.py
+│   └── tts.py
+│
+├── static/                 # Frontend: CSS, JS, icons
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── preload.js
+│   │   ├── speech.js
+│   │   ├── ui.js
+│   │   ├── indexeddb.js
+│   │   └── sw-init.js
+│   │   └── service-worker.js
+│   └── icons/
+│       ├── icon-192.png
+│       ├── icon-512.png
+│       ├── maskable-512.png
+│       ├── shortcut-frase.png
+│       └── shortcut-star.png
+│
+├── templates/              # HTML base
+│   └── index.html
+│
+├── preload/                # Pictogramas precargados
+│   ├── pictos/             # Archivos PNG descargados
+│   ├── categorias.json
+│   ├── pictogramas.json
+│   ├── metadata.json
+│   └── preload.py
+│
+├── scripts/                # Herramientas externas
+│   ├── preload_pictograms.py
+│   ├── copiar_a_build.sh
+│   ├── build_deb.sh
+│   └── start.sh
+│
+├── manifest.webmanifest    # PWA config
+├── app.py                  # Entrada principal de la app
+├── requirements.txt        # Dependencias Python
+├── README.md               # Documentación del proyecto
+├── .gitignore              # Exclusión de archivos sensibles
+├── .gitattributes          # Control de formato y binarios
+          # Empaquetado .deb
 
 Créditos
 Pictogramas: ARASAAC
