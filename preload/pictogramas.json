@@ -1,0 +1,6 @@
+{
+  "comer": { "id": 1234, "local": "/preload/pictos/1234.png", "text": "Comer" },
+  "beber": { "id": 5678, "local": "/preload/pictos/5678.png", "text": "Beber" },
+  "caminar": { "id": 9123, "local": "/preload/pictos/9123.png", "text": "Caminar" }
+}
+
