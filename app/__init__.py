@@ -4,14 +4,14 @@ from app.routes import app_routes
 def create_app():
     app = Flask(__name__)
 
-    # Configuraciones base (extensibles)
+    # Configuraciones base (extensibles para producción)
     app.config["JSON_SORT_KEYS"] = False
-    app.config["MAX_CONTENT_LENGTH"] = 2 * 1024 * 1024  # 2MB por request
+    app.config["MAX_CONTENT_LENGTH"] = 2 * 1024 * 1024  # 2MB máximo por request
 
-    # Registro de rutas como blueprint
+    # Registro del blueprint principal
     app.register_blueprint(app_routes)
 
-    # Posible lugar para inicializar extensiones futuras (DB, cache, etc.)
-    # e.g. db.init_app(app), login_manager.init_app(app)
+    # Preparado para registrar otros módulos si se amplía
+    # e.g. db.init_app(app), cache.init_app(app), auth.init_app(app)
 
     return app
