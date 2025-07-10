@@ -4,6 +4,6 @@ import tempfile
 
 def generar_audio(frase: str):
     tts = gTTS(text=frase, lang="es")
-    tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".mp3")
-    tts.save(tmp.name)
-    return send_file(tmp.name, mimetype="audio/mpeg")
+    temp = tempfile.NamedTemporaryFile(delete=False, suffix=".mp3")
+    tts.save(temp.name)
+    return send_file(temp.name, mimetype="audio/mpeg")
