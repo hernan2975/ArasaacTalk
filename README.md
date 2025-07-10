@@ -1,148 +1,76 @@
-# 🇦🇷 ARASAACTalk Offline Python App
 
-<a href="https://fb3e545e-8e33-4568-8543-3745f0b246c8-00-37mxa4hfjg42u.kirk.replit.dev/" target="_blank">
-  <img src="https://img.shields.io/badge/%F0%9F%94%8C%20Probar%20App-en%20Replit-blue?style=for-the-badge" alt="Probar App en Replit" />
-</a>
+# 🗣️ ARASAAC Talk
 
-Aplicación educativa instalable, multilingüe y **100% funcional sin conexión a internet**, pensada para su uso en escuelas e instituciones argentinas.
+**ARASAAC Talk** es una aplicación web offline basada en pictogramas para facilitar la comunicación aumentativa y alternativa (CAA), especialmente pensada para personas con discapacidad. Utiliza recursos de ARASAAC, texto a voz (TTS) y almacenamiento local para funcionar sin conexión y adaptarse a cada usuario.
 
 ---
 
-## 🧩 Características
+## 📦 Características principales
 
-- ✅ Consulta y visualización de pictogramas de ARASAAC
-- ✅ Modo offline real (IndexedDB + Service Worker)
-- ✅ Precarga de categorías educativas frecuentes
-- ✅ Interfaz en 🇪🇸 Español, 🇬🇧 Inglés y 🇧🇷 Portugués
-- ✅ Compatible con Linux (.deb) y Windows (.msi)
-- ✅ Accesible desde navegador o instalable como PWA
-- ✅ Listo para aulas sin conexión, netbooks escolares y gabinetes digitales
-
----
-
-## 🚀 Requisitos
-
-- Python 3.10 o superior
-- Navegador moderno (Chrome, Edge, Firefox)
-- Conexión inicial opcional para precarga automática
+- ✅ Uso de pictogramas más frecuentes desde la base de datos de ARASAAC
+- 🗣️ Generación de frases con salida de voz (Google TTS)
+- 📶 Funciona completamente **offline** mediante IndexedDB y Service Worker
+- 👤 Usuario base “Ulises” sin login, con frases favoritas
+- 📁 Precarga de pictogramas y categorías más usadas
+- 🎨 Interfaz táctil, clara y accesible para celulares y tablets
 
 ---
 
-## ⚙️ Instalación local para desarrollo
+## 🚀 Instalación
 
-```bash
-git clone https://github.com/tu_usuario/arasaac-offline-pwa.git
-cd arasaac-offline-pwa
-python3 -m venv venv
-source venv/bin/activate         # En Windows: venv\Scripts\activate
+### 💻 Desde navegador (modo desarrollador)
+
+1. Cloná el proyecto:
+
+   ```bash
+   
+   git clone https://github.com/hernan2975/ArasaacTalk.git
+
+2. Instalá dependencias (si usás consola local):
+
 pip install -r requirements.txt
-python app.py
-```
 
-Luego abrí la app en [http://localhost:5000](http://localhost:5000)
+3. Ejecutá el servidor:
 
----
+bash start.sh
 
-## 📥 Precarga Offline
+4. Accedé desde http://localhost:5000
+   
+📱 Desde celular (como PWA)
 
-- Podés precargar pictogramas por categorías usando el botón en la interfaz.
-- También podés usar el script opcional `scripts/preload_pictograms.py` para preparar una versión completamente offline antes de empaquetar.
+1. Abrí el sitio en el navegador móvil
+2. Agregá a pantalla de inicio (opción "Instalar app")
+3. Usá la app como si fuera nativa, incluso sin conexión
 
----
+🧰 Estructura del proyecto
+bash
+    
+ArasaacTalk/
+├── app/                  # Lógica de rutas Flask
+├── templates/            # HTML con Jinja2
+├── static/               # Estilos, JS, service worker, íconos
+├── preload/              # Pictogramas y categorías precargadas
+├── i18n/                 # Traducciones (solo español activo)
+├── scripts/              # Script de carga inicial
+├── manifest.webmanifest  # Configuración PWA
+├── app.py                # Entrada principal Flask
+├── start.sh              # Arranque rápido
+├── build_deb.sh          # Empaquetado .deb
 
-## 🎨 Idiomas disponibles
+🧠 ¿Para quién está pensada?
+. Personas con discapacidad del habla, autismo o parálisis
+. Educadores y terapeutas que necesiten tableros offline
+. Contextos con conectividad limitada (rural, crisis)
 
-- 🇪🇸 Español (Argentina)
-- 🇬🇧 English
-- 🇧🇷 Português
+📄 Licencia
+MIT — Libre para usar, modificar y compartir.
 
----
+🤝 Contribuciones
+Este proyecto está abierto a mejoras. Si querés sumar, podés:
 
-## 🧪 Seguridad y accesibilidad
+. Crear nuevos tableros o pictogramas
+. Optimizar la carga offline
+. Mejorar accesibilidad
+. Traducir o añadir funcionalidades
 
-- Encabezados CSP y protección contra XSS
-- Interfaz accesible, responsive y con soporte de teclado
-- No utiliza cookies, rastreo ni scripts de terceros
-- Tema claro/oscuro conmutables desde el navegador
-
----
-
-## 📦 Empaquetado como `.deb` (Linux)
-
-La app puede instalarse como `.deb` usando los siguientes scripts incluidos en el repositorio:
-
-### 1. `copiar_a_build.sh`
-
-Copia automáticamente los archivos necesarios a la carpeta `build/opt/arasaac-offline/` para el empaquetado.
-
-```bash
-bash copiar_a_build.sh
-```
-
-### 2. `build_deb.sh`
-
-Ejecuta `copiar_a_build.sh` y luego genera el archivo `.deb` utilizando `fpm`:
-
-```bash
-sudo gem install --no-document fpm   # Si no lo tenés
-bash build_deb.sh
-```
-
-Esto generará un archivo como:
-
-```
-arasaac-offline_1.0.0_amd64.deb
-```
-
-Que podés instalar con:
-
-```bash
-sudo dpkg -i arasaac-offline_1.0.0_amd64.deb
-```
-
-La app se instalará en `/opt/arasaac-offline/` y se ejecuta con:
-
-```bash
-bash /opt/arasaac-offline/start.sh
-```
-
----
-
-## 🖥️ Empaquetado `.msi` (Windows)
-
-Se puede crear un `.msi` utilizando:
-
-- [Nuitka](https://nuitka.net/) para compilar a ejecutable
-- [WiX Toolset](https://wixtoolset.org/) para generar el instalador
-
-El proceso está explicado en la documentación técnica del proyecto.
-
----
-
-## 🤝 Contribuciones
-
-¡Toda contribución es bienvenida!
-
-- Podés sugerir nuevas funciones, mejoras en accesibilidad, pictogramas o idiomas
-- Abrí un issue o un Pull Request
-
----
-
-## 🪪 Licencia
-
-Este proyecto utiliza la licencia MIT. Es libre, gratuito y pensado para facilitar el acceso a pictogramas educativos en entornos con bajos recursos o sin conectividad.
-
----
-
-## 👩‍🏫 Pensado para el aula
-
-Diseñado para funcionar:
-
-- En aulas rurales o sin conexión
-- En netbooks escolares (Conectar Igualdad, Juana Manso)
-- En gabinetes informáticos con Linux o Windows
-- Como parte de un recurso didáctico accesible
-
----
-
-> Desarrollado con ❤️ en Argentina para inclusión, lenguaje y autonomía.
+   
