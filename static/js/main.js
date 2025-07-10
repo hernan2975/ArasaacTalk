@@ -1,43 +1,130 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const board = document.getElementById("board");
-  const output = document.getElementById("phrase-output");
+:root {
+  --primary: #4CAF50;
+  --accent: #2196F3;
+  --bg: #f5f7fa;
+  --text: #2c2c2c;
+  --font: 'Segoe UI', 'Inter', sans-serif;
+}
 
-  async function cargarPictogramas(palabra = "comida") {
-    try {
-      const res = await fetch(`/buscar?q=${palabra}`);
-      const pictos = await res.json();
-      board.innerHTML = "";
+body {
+  margin: 0;
+  font-family: var(--font);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  text-align: center;
+  padding: 1rem;
+}
 
-      pictos.forEach(p => {
-        const btn = document.createElement("button");
-        btn.classList.add("picto");
-        btn.innerHTML = `<img src="${p.url}" alt="${p.text}"/><span>${p.text}</span>`;
-        btn.onclick = () => {
-          output.textContent += `${p.text} `;
-        };
-        board.appendChild(btn);
-      });
-    } catch (error) {
-      board.innerHTML = `<p>Error al cargar pictogramas</p>`;
-    }
-  }
+header {
+  background: var(--primary);
+  color: white;
+  padding: 2rem 1rem;
+  border-radius: 0.5rem;
+}
 
-  document.querySelectorAll(".cat-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("selected"));
-      btn.classList.add("selected");
-      const categoria = btn.dataset.cat;
-      cargarPictogramas(categoria);
-    });
-  });
+#categorias {
+  margin: 1.5rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
 
-  document.getElementById("clear-btn").onclick = () => output.textContent = "";
-  document.getElementById("play-btn").onclick = () => {
-    const frase = output.textContent.trim();
-    if (frase) {
-      window.open(`/tts?frase=${encodeURIComponent(frase)}`, "_blank");
-    }
-  };
+.cat-btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  background: white;
+  color: var(--primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
 
-  cargarPictogramas(); // carga inicial
-});
+.cat-btn.selected {
+  background: var(--primary);
+  color: white;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+  margin: 2rem auto;
+  max-width: 1000px;
+}
+
+.picto {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  width: 100px;
+  padding: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.picto:hover,
+.picto:focus {
+  transform: scale(1.05);
+}
+
+.picto img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.picto span {
+  margin-top: 0.4rem;
+  display: block;
+  font-size: 0.9rem;
+}
+
+#phrase-area {
+  margin-top: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#phrase-output {
+  background: white;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  min-height: 2.5em;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.actions button {
+  padding: 0.6rem 1.2rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.actions button:hover {
+  background: #1976D2;
+}
+
+footer {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #777;
+}
