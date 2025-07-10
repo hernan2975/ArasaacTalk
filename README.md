@@ -1,4 +1,3 @@
-
 # 🗣️ ARASAAC Talk
 
 **ARASAAC Talk** es una aplicación web offline basada en pictogramas para facilitar la comunicación aumentativa y alternativa (CAA), especialmente pensada para personas con discapacidad. Utiliza recursos de ARASAAC, texto a voz (TTS) y almacenamiento local para funcionar sin conexión y adaptarse a cada usuario.
