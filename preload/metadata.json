@@ -2,14 +2,17 @@
   "1234": {
     "text": "Comer",
     "altText": "Persona comiendo",
-    "tags": ["alimentación", "acción"],
-    "contrast": "high"
+    "tags": ["acción", "alimentación", "cotidiano"],
+    "contrast": "alto",
+    "recommendedFor": ["niño", "adulto", "TEA"],
+    "local": "/preload/pictos/1234.png"
   },
   "5678": {
-    "text": "Feliz",
-    "altText": "Cara sonriente",
-    "tags": ["emoción", "positivo"],
-    "contrast": "medium"
+    "text": "Beber",
+    "altText": "Persona tomando líquido",
+    "tags": ["acción", "hidratación"],
+    "contrast": "medio",
+    "recommendedFor": ["niño"],
+    "local": "/preload/pictos/5678.png"
   }
 }
-
