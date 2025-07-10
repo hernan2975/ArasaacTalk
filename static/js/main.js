@@ -2,12 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const board = document.getElementById("board");
   const output = document.getElementById("phrase-output");
 
-  // Función para buscar pictogramas por palabra clave
   async function cargarPictogramas(palabra = "comida") {
     const res = await fetch(`/buscar?q=${palabra}`);
     const pictos = await res.json();
-
-    board.innerHTML = ""; // Limpiar tablero
+    board.innerHTML = "";
 
     pictos.forEach(p => {
       const btn = document.createElement("button");
@@ -20,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Botones de categoría
   document.querySelectorAll(".cat-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("selected"));
@@ -30,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Acciones de frase
   document.getElementById("clear-btn").onclick = () => output.textContent = "";
   document.getElementById("play-btn").onclick = () => {
     const frase = output.textContent;
@@ -39,5 +35,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  cargarPictogramas(); // Carga inicial
+  cargarPictogramas();
 });
