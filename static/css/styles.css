@@ -1,30 +1,48 @@
 :root {
-  --primary: #4CAF50;
-  --accent: #2196F3;
-  --bg: #f5f7fa;
-  --text: #2c2c2c;
-  --font: 'Segoe UI', 'Inter', sans-serif;
+  --color-primary: #4CAF50;
+  --color-accent: #2196F3;
+  --color-bg: #f5f7fa;
+  --color-text: #2c2c2c;
+  --color-muted: #777;
+  --font-main: 'Segoe UI', 'Inter', sans-serif;
+  --radius: 0.5rem;
+  --shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: var(--font);
-  background-color: var(--bg);
-  color: var(--text);
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.6;
-  text-align: center;
   padding: 1rem;
+  text-align: center;
 }
 
 header {
-  background: var(--primary);
+  background-color: var(--color-primary);
   color: white;
   padding: 2rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+p {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
 }
 
 #categorias {
-  margin: 1.5rem auto;
+  margin: 2rem auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -35,16 +53,16 @@ header {
   padding: 0.6rem 1.2rem;
   font-size: 1rem;
   font-weight: 600;
-  border: 2px solid var(--primary);
-  border-radius: 0.5rem;
-  background: white;
-  color: var(--primary);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius);
+  background-color: white;
+  color: var(--color-primary);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .cat-btn.selected {
-  background: var(--primary);
+  background-color: var(--color-primary);
   color: white;
 }
 
@@ -58,19 +76,20 @@ header {
 }
 
 .picto {
-  background: white;
+  background-color: white;
   border: 1px solid #ccc;
-  border-radius: 0.75rem;
+  border-radius: var(--radius);
   width: 100px;
   padding: 0.5rem;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .picto:hover,
 .picto:focus {
   transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .picto img {
@@ -83,6 +102,7 @@ header {
   margin-top: 0.4rem;
   display: block;
   font-size: 0.9rem;
+  color: var(--color-text);
 }
 
 #phrase-area {
@@ -93,13 +113,14 @@ header {
 }
 
 #phrase-output {
-  background: white;
+  background-color: white;
   padding: 1rem;
   border: 1px solid #ccc;
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   min-height: 2.5em;
   font-size: 1.2rem;
   margin-bottom: 1rem;
+  box-shadow: var(--shadow);
 }
 
 .actions {
@@ -110,21 +131,21 @@ header {
 
 .actions button {
   padding: 0.6rem 1.2rem;
-  background: var(--accent);
+  background-color: var(--color-accent);
   color: white;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .actions button:hover {
-  background: #1976D2;
+  background-color: #1976D2;
 }
 
 footer {
   margin-top: 3rem;
   font-size: 0.9rem;
-  color: #777;
+  color: var(--color-muted);
 }
