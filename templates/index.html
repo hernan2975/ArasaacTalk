@@ -2,28 +2,27 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>ARASAAC Talk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARASAAC Talk</title>
   <link rel="stylesheet" href="/static/css/style.css" />
 </head>
 <body>
-  <header>
+  <header role="banner">
     <h1>🧠 ARASAAC Talk</h1>
-    <p>Construcción de frases con pictogramas</p>
+    <p>Comunicación aumentativa con pictogramas</p>
   </header>
 
-  <nav id="categorias">
-    <button class="cat-btn selected" data-cat="comida">🍽 Comida</button>
-    <button class="cat-btn" data-cat="acciones">🚶 Acciones</button>
-    <button class="cat-btn" data-cat="emociones">😄 Emociones</button>
+  <nav id="categorias" role="navigation" aria-label="Categorías">
+    <!-- Botones cargados por JavaScript -->
   </nav>
 
-  <main>
-    <section id="board"></section>
+  <main role="main">
+    <section id="board" aria-label="Pictogramas disponibles"></section>
 
-    <section id="phrase-area">
-      <h2>🧩 Frase construida</h2>
+    <section id="phrase-area" aria-label="Frase construida">
+      <h2>🧩 Frase:</h2>
       <div id="phrase-output" aria-live="polite"></div>
+
       <div class="actions">
         <button id="play-btn">🔈 Reproducir</button>
         <button id="clear-btn">🧹 Limpiar</button>
@@ -31,10 +30,10 @@
     </section>
   </main>
 
-  <footer>
-    <small>ARASAAC Talk • Hecho por Hernán para Ulises • 2025</small>
+  <footer role="contentinfo">
+    <small>Hecho por Hernán para Ulises • 2025</small>
   </footer>
 
-  <script src="/static/js/main.js"></script>
+  <script src="/static/js/main.js" defer></script>
 </body>
 </html>
