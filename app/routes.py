@@ -1,47 +1,42 @@
 from flask import Blueprint, render_template, jsonify, request, send_file
 from app.arasaac import buscar_pictogramas, obtener_url_imagen
-from gtts import gTTS
-import tempfile
+from app.tts import generar_audio
 
 app_routes = Blueprint("app_routes", __name__)
 
-# Página principal
+# 🌐 Página principal
 @app_routes.route("/")
 def index():
     return render_template("index.html")
 
-# Endpoint de prueba
+# 🔧 Endpoint de prueba
 @app_routes.route("/ping")
 def ping():
     return "pong"
 
-# Buscar pictogramas desde la API oficial de ARASAAC
-@app_routes.route("/buscar", methods=["GET"])
+# 🔍 Buscar pictogramas por palabra
+@app_routes.route("/buscar")
 def buscar():
-    palabra = request.args.get("q", "")
+    palabra = request.args.get("q", "").strip().lower()
     pictos = buscar_pictogramas(palabra)
     resultados = []
 
     for p in pictos:
-        if "keywords" in p and p["keywords"]:
-            texto = p["keywords"][0]["keyword"]
-            url = obtener_url_imagen(p["id"])
+        keyword = next((k["keyword"] for k in p.get("keywords", []) if k.get("keyword")), None)
+        if keyword:
             resultados.append({
                 "id": p["id"],
-                "url": url,
-                "text": texto
+                "url": obtener_url_imagen(p["id"]),
+                "text": keyword
             })
 
     return jsonify(resultados)
 
-# Reproducir frase en voz con gTTS
+# 🔈 Generar voz con gTTS
 @app_routes.route("/tts")
 def tts():
     frase = request.args.get("frase", "").strip()
     if not frase:
         return "Frase vacía", 400
 
-    tts = gTTS(text=frase, lang="es")
-    temp = tempfile.NamedTemporaryFile(delete=False, suffix=".mp3")
-    tts.save(temp.name)
-    return send_file(temp.name, mimetype="audio/mpeg")
+    return generar_audio(frase)
