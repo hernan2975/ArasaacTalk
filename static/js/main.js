@@ -1,11 +1,28 @@
-import { cargarCategorias } from "./preload.js";
+import { cargarCategorias, cargarPictogramasOffline } from "./preload.js";
 import { reproducirFrase } from "./speech.js";
-import { construirBotonesCategoria, limpiarFrase, construirFavoritos } from "./ui.js";
+import {
+  construirBotonesCategoria,
+  limpiarFrase,
+  renderizarPictograma,
+  construirFavoritos
+} from "./ui.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await cargarCategorias(construirBotonesCategoria);
-  await construirFavoritos();
+  const board = document.getElementById("board");
+  const output = document.getElementById("phrase-output");
 
-  document.getElementById("play-btn").onclick = reproducirFrase;
-  document.getElementById("clear-btn").onclick = limpiarFrase;
+  // 🚀 Cargar y renderizar categorías desde preload
+  const categorias = await cargarCategorias();
+  construirBotonesCategoria(categorias, async (lista) => {
+    await cargarPictogramasOffline(lista, board, output);
+  });
+
+  // ⭐ Mostrar favoritos guardados
+  await construirFavoritos(board, output);
+
+  // 🔈 Reproducir frase construida
+  document.getElementById("play-btn").onclick = () => reproducirFrase(output);
+
+  // 🧹 Limpiar frase construida
+  document.getElementById("clear-btn").onclick = () => limpiarFrase(output);
 });
