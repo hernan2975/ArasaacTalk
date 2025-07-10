@@ -3,37 +3,41 @@ document.addEventListener("DOMContentLoaded", () => {
   const output = document.getElementById("phrase-output");
 
   async function cargarPictogramas(palabra = "comida") {
-    const res = await fetch(`/buscar?q=${palabra}`);
-    const pictos = await res.json();
-    board.innerHTML = "";
+    try {
+      const res = await fetch(`/buscar?q=${palabra}`);
+      const pictos = await res.json();
+      board.innerHTML = "";
 
-    pictos.forEach(p => {
-      const btn = document.createElement("button");
-      btn.classList.add("picto");
-      btn.innerHTML = `<img src="${p.url}" alt="${p.text}" /><br>${p.text}`;
-      btn.onclick = () => {
-        output.textContent += `${p.text} `;
-      };
-      board.appendChild(btn);
-    });
+      pictos.forEach(p => {
+        const btn = document.createElement("button");
+        btn.classList.add("picto");
+        btn.innerHTML = `<img src="${p.url}" alt="${p.text}"/><span>${p.text}</span>`;
+        btn.onclick = () => {
+          output.textContent += `${p.text} `;
+        };
+        board.appendChild(btn);
+      });
+    } catch (error) {
+      board.innerHTML = `<p>Error al cargar pictogramas</p>`;
+    }
   }
 
   document.querySelectorAll(".cat-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("selected"));
       btn.classList.add("selected");
-      const tema = btn.textContent.trim().split(" ")[1];
-      cargarPictogramas(tema.toLowerCase());
+      const categoria = btn.dataset.cat;
+      cargarPictogramas(categoria);
     });
   });
 
   document.getElementById("clear-btn").onclick = () => output.textContent = "";
   document.getElementById("play-btn").onclick = () => {
-    const frase = output.textContent;
-    if (frase.trim()) {
+    const frase = output.textContent.trim();
+    if (frase) {
       window.open(`/tts?frase=${encodeURIComponent(frase)}`, "_blank");
     }
   };
 
-  cargarPictogramas();
+  cargarPictogramas(); // carga inicial
 });
