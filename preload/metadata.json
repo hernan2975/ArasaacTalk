@@ -1,0 +1,15 @@
+{
+  "1234": {
+    "text": "Comer",
+    "altText": "Persona comiendo",
+    "tags": ["alimentación", "acción"],
+    "contrast": "high"
+  },
+  "5678": {
+    "text": "Feliz",
+    "altText": "Cara sonriente",
+    "tags": ["emoción", "positivo"],
+    "contrast": "medium"
+  }
+}
+
