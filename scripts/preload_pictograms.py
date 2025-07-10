@@ -1,53 +1,64 @@
-import os
-import json
-import requests
+import requests, os, json
+from pathlib import Path
 
-# Configuración
-API_URL = "https://api.arasaac.org/api/pictograms"
-IDIOMA = "es"
-MAX_PICTOS = 5
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.join(BASE_DIR, "..", "preload")
-DATOS_DIR = os.path.join(ROOT, "pictos", "datos")
-IMG_DIR = os.path.join(ROOT, "pictos", "imagenes")
+BASE_API = "https://api.arasaac.org/api/pictograms/es/search"
+CDN = "https://static.arasaac.org/pictograms"
+CARPETA = Path("preload/pictos/")
+CATEGORIAS = {
+  "comida": ["comer", "beber", "desayuno"],
+  "acciones": ["caminar", "correr", "leer"],
+  "emociones": ["feliz", "triste", "enojado"]
+}
 
-# Asegurar carpetas
-os.makedirs(DATOS_DIR, exist_ok=True)
-os.makedirs(IMG_DIR, exist_ok=True)
+def descargar(id_picto):
+    url = f"{CDN}/{id_picto}/{id_picto}_300.png"
+    ruta = CARPETA / f"{id_picto}.png"
+    if not ruta.exists():
+        res = requests.get(url)
+        if res.status_code == 200:
+            with open(ruta, "wb") as f:
+                f.write(res.content)
+    return str(ruta)
 
-# Cargar categorías
-with open(os.path.join(ROOT, "categorias.json"), "r", encoding="utf-8") as f:
-    categorias = json.load(f)["categorias"]
+def main():
+    CARPETA.mkdir(parents=True, exist_ok=True)
+    pictos = {}
+    metadata = {}
 
-descargados = 0
-for categoria in categorias:
-    print(f"\n🔍 Descargando pictogramas para: {categoria}")
-    resp = requests.get(f"{API_URL}/{IDIOMA}/search/{categoria}")
-    if resp.status_code != 200:
-        print(f"❌ Error en la búsqueda de: {categoria}")
-        continue
+    for categoria, palabras in CATEGORIAS.items():
+        for palabra in palabras:
+            res = requests.get(f"{BASE_API}/{palabra}")
+            if res.status_code != 200: continue
+            data = res.json()
+            if not data: continue
+            p = data[0]
+            id_picto = p["id"]
+            ruta_local = descargar(id_picto)
+            text = palabra.capitalize()
 
-    pictos = resp.json()[:MAX_PICTOS]
-    for picto in pictos:
-        pid = str(picto["_id"])
-        json_path = os.path.join(DATOS_DIR, f"{pid}.json")
-        img_path = os.path.join(IMG_DIR, f"{pid}.png")
+            pictos[palabra] = {
+                "id": id_picto,
+                "local": ruta_local,
+                "text": text
+            }
 
-        # Guardar JSON
-        with open(json_path, "w", encoding="utf-8") as jf:
-            json.dump(picto, jf, ensure_ascii=False, indent=2)
+            metadata[str(id_picto)] = {
+                "text": text,
+                "altText": p.get("meaning", f"Imagen de {text}"),
+                "tags": [categoria],
+                "contrast": "alto",
+                "recommendedFor": ["niño", "TEA"],
+                "local": ruta_local
+            }
 
-        # Descargar imagen
-        img_url = f"https://static.arasaac.org/pictograms/{pid}/{pid}_300.png"
-        try:
-            img_data = requests.get(img_url).content
-            with open(img_path, "wb") as imgf:
-                imgf.write(img_data)
-        except:
-            print(f"⚠️  No se pudo guardar imagen {pid}")
-            continue
+    with open("preload/pictogramas.json", "w", encoding="utf-8") as f:
+        json.dump(pictos, f, ensure_ascii=False, indent=2)
 
-        descargados += 1
-        print(f"✅ {pid} - OK")
+    with open("preload/metadata.json", "w", encoding="utf-8") as f:
+        json.dump(metadata, f, ensure_ascii=False, indent=2)
 
-print(f"\n🎉 Descarga finalizada. Total pictogramas guardados: {descargados}")
+    with open("preload/categorias.json", "w", encoding="utf-8") as f:
+        json.dump(CATEGORIAS, f, ensure_ascii=False, indent=2)
+
+if __name__ == "__main__":
+    main()
