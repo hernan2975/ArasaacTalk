@@ -1,12 +1,10 @@
-#JSON
-
 {
-  "name": "ARASAAC Offline",
+  "name": "ARASAAC Talk",
   "short_name": "ARASAAC",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#1976d2",
+  "theme_color": "#4CAF50",
   "icons": [
     {
       "src": "/static/icons/icon-192.png",
@@ -20,5 +18,3 @@
     }
   ]
 }
-
-
