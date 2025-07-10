@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARASAAC Talk</title>
 
-  <!-- Estilos -->
-  <link rel="stylesheet" href="/static/css/style.css" />
+  <!-- Ícono para navegador -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/static/icons/icon-192.png" />
 
-  <!-- Meta accesibilidad -->
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.webmanifest" />
   <meta name="theme-color" content="#4CAF50" />
   <meta name="description" content="Construye frases con pictogramas ARASAAC. Comunicación aumentativa pensada para todos." />
-  <link rel="manifest" href="/manifest.webmanifest" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="/static/css/style.css" />
 </head>
 <body>
   <header role="banner">
@@ -20,12 +23,12 @@
   </header>
 
   <nav id="categorias" role="navigation" aria-label="Categorías">
-    <!-- Botones de categoría generados dinámicamente -->
+    <!-- Botones generados dinámicamente -->
   </nav>
 
   <main role="main">
     <section id="board" aria-label="Pictogramas disponibles">
-      <!-- Sección principal de pictogramas -->
+      <!-- Pictogramas renderizados aquí -->
     </section>
 
     <section id="phrase-area" aria-label="Frase construida">
@@ -43,7 +46,7 @@
     <small>ARASAAC Talk • Hecho por Hernán para Ulises • 2025</small>
   </footer>
 
-  <!-- Scripts modularizados -->
+  <!-- Scripts modulares -->
   <script src="/static/js/preload.js" type="module"></script>
   <script src="/static/js/speech.js" type="module"></script>
   <script src="/static/js/ui.js" type="module"></script>
