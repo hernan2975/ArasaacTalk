@@ -1,6 +1,43 @@
-// Lógica principal de interacción con el tablero
-console.log("ARASAAC Talk iniciado");
+document.addEventListener("DOMContentLoaded", () => {
+  const board = document.getElementById("board");
+  const output = document.getElementById("phrase-output");
 
-document.getElementById("play-btn").addEventListener("click", () => {
-    alert("🔈 Reproducir frase (demo)");
+  // Función para buscar pictogramas por palabra clave
+  async function cargarPictogramas(palabra = "comida") {
+    const res = await fetch(`/buscar?q=${palabra}`);
+    const pictos = await res.json();
+
+    board.innerHTML = ""; // Limpiar tablero
+
+    pictos.forEach(p => {
+      const btn = document.createElement("button");
+      btn.classList.add("picto");
+      btn.innerHTML = `<img src="${p.url}" alt="${p.text}" /><br>${p.text}`;
+      btn.onclick = () => {
+        output.textContent += `${p.text} `;
+      };
+      board.appendChild(btn);
+    });
+  }
+
+  // Botones de categoría
+  document.querySelectorAll(".cat-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+      const tema = btn.textContent.trim().split(" ")[1];
+      cargarPictogramas(tema.toLowerCase());
+    });
+  });
+
+  // Acciones de frase
+  document.getElementById("clear-btn").onclick = () => output.textContent = "";
+  document.getElementById("play-btn").onclick = () => {
+    const frase = output.textContent;
+    if (frase.trim()) {
+      window.open(`/tts?frase=${encodeURIComponent(frase)}`, "_blank");
+    }
+  };
+
+  cargarPictogramas(); // Carga inicial
 });
