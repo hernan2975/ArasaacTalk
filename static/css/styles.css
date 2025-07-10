@@ -1,57 +1,124 @@
+:root {
+  --primary: #4CAF50;
+  --secondary: #2196F3;
+  --bg: #f5f7fa;
+  --text: #333;
+}
+
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f5f7fa;
   margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
   padding: 1em;
   text-align: center;
 }
 
 header {
-  background: #4CAF50;
+  background: var(--primary);
   color: white;
-  padding: 1em;
+  padding: 1.5em;
   border-radius: 8px;
 }
 
 #categorias {
   margin: 1em 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
 }
 
 .cat-btn {
-  margin: 0.2em;
   padding: 0.5em 1em;
-  background: #fff;
-  border: 2px solid #4CAF50;
+  border: 2px solid var(--primary);
+  background: white;
+  color: var(--primary);
   border-radius: 8px;
   cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
 }
 
-.selected {
-  background-color: #4CAF50;
+.cat-btn.selected {
+  background: var(--primary);
   color: white;
 }
 
+#board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 1em;
+  justify-items: center;
+  margin: 2em auto;
+  max-width: 900px;
+}
+
 .picto {
-  margin: 0.5em;
-  padding: 0.2em;
-  background: #fff;
+  background: white;
   border: 1px solid #ccc;
   border-radius: 12px;
-  cursor: pointer;
   width: 100px;
-  height: 120px;
+  padding: 0.5em;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.picto:hover {
+  transform: scale(1.05);
 }
 
 .picto img {
   width: 80px;
   height: 80px;
+  object-fit: contain;
+}
+
+.picto span {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  color: var(--text);
+}
+
+#phrase-area {
+  margin: 2em auto;
+  max-width: 600px;
 }
 
 #phrase-output {
-  font-size: 1.2em;
-  background: #fff;
-  padding: 1em;
+  background: white;
   border: 1px solid #ccc;
-  margin: 1em 0;
   border-radius: 6px;
+  padding: 1em;
+  font-size: 1.2em;
+  min-height: 3em;
+}
+
+.actions {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.actions button {
+  padding: 0.5em 1.2em;
+  border-radius: 6px;
+  font-size: 1em;
+  border: none;
+  background: var(--secondary);
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.actions button:hover {
+  background: #1976D2;
+}
+
+footer {
+  margin-top: 2em;
+  font-size: 0.9em;
+  color: #777;
 }
