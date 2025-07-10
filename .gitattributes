@@ -1,7 +1,16 @@
+# Text files (normalizados con LF)
+*.py       text eol=lf
+*.html     text eol=lf
+*.css      text eol=lf
+*.js       text eol=lf
+*.json     text eol=lf
+*.md       text eol=lf
+*.sh       text eol=lf
 
-*.py text eol=lf
-*.html text eol=lf
-*.css text eol=lf
-*.js text eol=lf
-*.json text eol=lf
-*.md text eol=lf
+# Binarios protegidos
+*.png      binary
+*.mp3      binary
+*.ico      binary
+
+# Archivos lock sin merge automático
+*.lock     merge=ours
