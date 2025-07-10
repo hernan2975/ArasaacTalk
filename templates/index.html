@@ -3,13 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>ARASAAC Talk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <h1>Bienvenido Ulises 👋</h1>
-    <div id="board"></div>
-    <button id="play-btn">🔈 Reproducir</button>
+    <header>
+        <h1>Bienvenido, Ulises 👋</h1>
+        <p>Seleccioná pictogramas para construir tu frase</p>
+    </header>
+
+    <main>
+        <div id="board" class="pictogram-grid">
+            <!-- Aquí se cargarán los pictogramas -->
+        </div>
+
+        <section id="phrase-area">
+            <h2>Frase construida:</h2>
+            <div id="phrase-output"></div>
+            <button id="play-btn">🔈 Reproducir</button>
+            <button id="clear-btn">🧹 Limpiar</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>ARASAAC Talk © 2025</p>
+    </footer>
+
     <script src="/static/js/main.js"></script>
+    <script src="/static/js/indexeddb.js"></script>
 </body>
 </html>
