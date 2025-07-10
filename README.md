@@ -56,6 +56,11 @@ ArasaacTalk/
 ├── start.sh              # Arranque rápido
 ├── build_deb.sh          # Empaquetado .deb
 
+Créditos
+Pictogramas: ARASAAC
+
+Voz: Google TTS
+
 🧠 ¿Para quién está pensada?
 . Personas con discapacidad del habla, autismo o parálisis
 . Educadores y terapeutas que necesiten tableros offline
