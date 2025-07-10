@@ -1,8 +1,24 @@
+# Python
 __pycache__/
-.env
-instance/
-*.pyc
-node_modules/
+*.py[cod]
+*.egg
+*.egg-info/
 dist/
-*.deb
-*.msi
+build/
+*.log
+
+# Flask
+instance/
+.env
+
+# PWA
+static/js/service-worker.js
+static/js/*.map
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
