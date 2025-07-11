@@ -1,9 +1,10 @@
 # 🧠 Manual Técnico de ARASAAC Talk
 
 Aplicación accesible de comunicación aumentativa que permite construir frases con pictogramas ARASAAC. Implementada con Flask, HTML/CSS/JS, IndexedDB y arquitectura PWA modular.
-
----
 ## 📦 Estructura del proyecto
+
+## 📦 Estructura del proyecto
+
 
 
 
