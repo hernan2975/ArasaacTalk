@@ -1,12 +1,59 @@
 # 🧠 Manual Técnico de ARASAAC Talk
 
 Aplicación accesible de comunicación aumentativa que permite construir frases con pictogramas ARASAAC. Implementada con Flask, HTML/CSS/JS, IndexedDB y arquitectura PWA modular.
-## 📦 Estructura del proyecto
 
-## 📦 Estructura del proyecto
+---
 
+📦 Estructura del Proyecto (versión accesible para celular)
+app/
 
+__init__.py
 
+routes.py
+
+arasaac.py
+
+tts.py
+
+static/
+
+css/style.css
+
+js/
+
+main.js, preload.js, speech.js, ui.js, indexeddb.js, sw-init.js, service-worker.js
+
+icons/
+
+icon-192.png, icon-512.png, maskable-512.png, shortcut-frase.png, shortcut-star.png
+
+templates/index.html
+
+preload/
+
+pictos/ → pictogramas .png
+
+categorias.json, pictogramas.json, metadata.json, preload.py
+
+scripts/
+
+preload_pictograms.py, copiar_a_build.sh, build_deb.sh, start.sh
+
+manifest.webmanifest
+
+service-worker.js
+
+app.py
+
+requirements.txt
+
+README.md
+
+.gitignore
+
+.gitattributes
+
+---
 
 ## ⚙️ Backend (Flask)
 
