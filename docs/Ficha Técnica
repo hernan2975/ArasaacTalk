@@ -1,0 +1,30 @@
+
+## 📄 Ficha técnica (docs/ficha-tecnica.md)
+
+```markdown
+# 📄 Ficha Técnica — ARASAAC Talk
+
+**Nombre del proyecto:** ARASAAC Talk  
+**Autor:** Hernán Luis Lang  
+**Propósito:** Herramienta de comunicación aumentativa basada en pictogramas ARASAAC  
+**Tecnologías utilizadas:**
+- Python (Flask)
+- HTML/CSS/JavaScript
+- IndexedDB (Persistencia local)
+- Google TTS (Síntesis de voz)
+- Progressive Web App (Service Worker + Manifest)
+
+**Funcionalidades:**
+- Construcción de frases con pictogramas
+- Reproducción de frases por voz
+- Marcado de favoritos con persistencia offline
+- Precarga local de pictogramas desde API ARASAAC
+- Instalación como aplicación PWA en dispositivos móviles
+- Interfaz accesible y responsiva
+
+**Licencia de uso:** A definir por el autor (se sugiere MIT o CC-BY-SA si es de uso público)
+
+**Última versión:** 1.0.0  
+**Fecha de última actualización:** Julio 2025
+
+**Contacto:** hernan.luis.lang [at] correo.com  
