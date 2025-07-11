@@ -4,54 +4,56 @@ Aplicación accesible de comunicación aumentativa que permite construir frases 
 
 ---
 
-📦 Estructura del Proyecto (versión accesible para celular)
-app/
+📁 Estructura profesional del repositorio
 
-__init__.py
-
-routes.py
-
-arasaac.py
-
-tts.py
-
-static/
-
-css/style.css
-
-js/
-
-main.js, preload.js, speech.js, ui.js, indexeddb.js, sw-init.js, service-worker.js
-
-icons/
-
-icon-192.png, icon-512.png, maskable-512.png, shortcut-frase.png, shortcut-star.png
-
-templates/index.html
-
-preload/
-
-pictos/ → pictogramas .png
-
-categorias.json, pictogramas.json, metadata.json, preload.py
-
-scripts/
-
-preload_pictograms.py, copiar_a_build.sh, build_deb.sh, start.sh
-
-manifest.webmanifest
-
-service-worker.js
-
-app.py
-
-requirements.txt
-
-README.md
-
-.gitignore
-
-.gitattributes
+ArasaacTalk/
+ARASAAC-Talk/
+├── app/                    # Backend Flask modular
+│   ├── __init__.py
+│   ├── routes.py
+│   ├── arasaac.py
+│   └── tts.py
+│
+├── static/                 # Frontend: CSS, JS, icons
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── preload.js
+│   │   ├── speech.js
+│   │   ├── ui.js
+│   │   ├── indexeddb.js
+│   │   └── sw-init.js
+│   │   └── service-worker.js
+│   └── icons/
+│       ├── icon-192.png
+│       ├── icon-512.png
+│       ├── maskable-512.png
+│       ├── shortcut-frase.png
+│       └── shortcut-star.png
+│
+├── templates/              # HTML base
+│   └── index.html
+│
+├── preload/                # Pictogramas precargados
+│   ├── pictos/             # Archivos PNG descargados
+│   ├── categorias.json
+│   ├── pictogramas.json
+│   ├── metadata.json
+│   └── preload.py
+│
+├── scripts/                # Herramientas externas
+│   ├── preload_pictograms.py
+│   ├── copiar_a_build.sh
+│   ├── build_deb.sh
+│   └── start.sh
+│
+├── manifest.webmanifest    # PWA config
+├── app.py                  # Entrada principal de la app
+├── requirements.txt        # Dependencias Python
+├── README.md               # Documentación del proyecto
+├── .gitignore              # Exclusión de archivos sensibles
+├── .gitattributes          # Control de formato y binarios
 
 ---
 
