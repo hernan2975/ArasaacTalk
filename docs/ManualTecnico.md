@@ -6,7 +6,6 @@ Aplicación accesible de comunicación aumentativa que permite construir frases 
 
 📁 Estructura profesional del repositorio
 
-ArasaacTalk/
 ARASAAC-Talk/
 ├── app/                    # Backend Flask modular
 │   ├── __init__.py
