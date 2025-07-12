@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagnóstico ARASAAC Talk</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 1rem;
+      background: #f9f9f9;
+    }
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin: 0.4rem 0;
+      padding: 0.4rem;
+      border-radius: 4px;
+      background: #eee;
+    }
+    .ok { background: #d4edda; color: #155724; }
+    .fail { background: #f8d7da; color: #721c24; }
+  </style>
+</head>
+<body>
+  <h1>📊 Diagnóstico de ARASAAC Talk</h1>
+  <ul id="results">
+    <li>Cargando prueba...</li>
+  </ul>
+
+  <script>
+    const tests = [
+      {
+        label: "🔈 Ruta /tts disponible",
+        test: () => fetch("/tts?frase=hola").then(r => r.ok)
+      },
+      {
+        label: "📁 Carga pictogramas",
+        test: () => fetch("/preload/pictogramas.json").then(r => r.ok)
+      },
+      {
+        label: "📂 Precarga de categorías",
+        test: () => fetch("/preload/categorias.json").then(r => r.ok)
+      },
+      {
+        label: "🎨 CSS aplicado",
+        test: () => {
+          const style = getComputedStyle(document.body);
+          return Promise.resolve(style.backgroundColor !== "rgba(0, 0, 0, 0)");
+        }
+      },
+      {
+        label: "📦 Service Worker registrado",
+        test: () => Promise.resolve("serviceWorker" in navigator)
+      }
+    ];
+
+    async function runTests() {
+      const ul = document.getElementById("results");
+      ul.innerHTML = "";
+      for (const t of tests) {
+        let ok = false;
+        try {
+          ok = await t.test();
+        } catch (_) {}
+        const li = document.createElement("li");
+        li.textContent = t.label + (ok ? " ✅" : " ❌");
+        li.className = ok ? "ok" : "fail";
+        ul.appendChild(li);
+      }
+    }
+
+    runTests();
+  </script>
+</body>
+</html>
